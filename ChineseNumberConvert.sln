@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChineseNumberConvert", "ChineseNumberConvert\ChineseNumberConvert.csproj", "{3F059C46-86F6-4D95-9EDC-DAD4C6C0372D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChineseNumberConvert.Tests", "ChineseNumberConvert.Tests\ChineseNumberConvert.Tests.csproj", "{BE4C5418-BF7D-4E72-A69D-94EA8B36162B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F059C46-86F6-4D95-9EDC-DAD4C6C0372D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F059C46-86F6-4D95-9EDC-DAD4C6C0372D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F059C46-86F6-4D95-9EDC-DAD4C6C0372D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F059C46-86F6-4D95-9EDC-DAD4C6C0372D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE4C5418-BF7D-4E72-A69D-94EA8B36162B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE4C5418-BF7D-4E72-A69D-94EA8B36162B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE4C5418-BF7D-4E72-A69D-94EA8B36162B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE4C5418-BF7D-4E72-A69D-94EA8B36162B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
