@@ -83,6 +83,7 @@ public class ChineseNumberTests
   [TestCase("四千二百七十四", 4274)]
   [TestCase("四百万九千五百三十七", 4009537)]
   [TestCase("四百九十二万三千五百八十六", 4923586)]
+  [TestCase("零", 0)]
   public void ChineseToArabicTest(string cnNumber, int expected)
   {
     Assert.That(ChineseToArabic(cnNumber) == expected);
