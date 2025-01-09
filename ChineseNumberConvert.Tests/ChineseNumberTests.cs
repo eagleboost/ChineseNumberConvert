@@ -1,6 +1,7 @@
 namespace ChineseNumberConvert.Tests;
 
 using static NumberConvert;
+using static ChineseToArabicMethod;
 
 public class ChineseNumberTests
 {
@@ -86,6 +87,11 @@ public class ChineseNumberTests
   [TestCase("零", 0)]
   public void ChineseToArabicTest(string cnNumber, int expected)
   {
-    Assert.That(ChineseToArabic(cnNumber) == expected);
+    Assert.Multiple(() =>
+    { 
+      Assert.That(ChineseToArabic(cnNumber), Is.EqualTo(expected));
+      Assert.That(ChineseToArabic(cnNumber, Gpt), Is.EqualTo(expected));
+      Assert.That(ChineseToArabic(cnNumber, DeepSeek), Is.EqualTo(expected));
+    });
   }
 }

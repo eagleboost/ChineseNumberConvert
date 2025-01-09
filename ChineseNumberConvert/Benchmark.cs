@@ -1,6 +1,7 @@
 namespace ChineseNumberConvert;
 
 using BenchmarkDotNet.Attributes;
+using static ChineseToArabicMethod;
 
 [MemoryDiagnoser]
 public class Benchmark
@@ -9,6 +10,18 @@ public class Benchmark
   public void CN_To_Arabic()
   {
     NumberConvert.ChineseToArabic("七千二百五十四万一千三百八十八");
+  }
+
+  [Benchmark]
+  public void CN_To_Arabic_GPT()
+  {
+    NumberConvert.ChineseToArabic("七千二百五十四万一千三百八十八", Gpt);
+  }
+
+  [Benchmark]
+  public void CN_To_Arabic_DeepSeek()
+  {
+    NumberConvert.ChineseToArabic("七千二百五十四万一千三百八十八", DeepSeek);
   }
 
   [Benchmark]

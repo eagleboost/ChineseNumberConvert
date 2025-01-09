@@ -2,7 +2,7 @@ namespace ChineseNumberConvert;
 
 public static partial class NumberConvert
 {
-  public static class ChineseToArabicImpl
+  public static partial class ChineseToArabicImpl
   {
     public static long ConvertChineseToArabic(string chineseNumber)
     {

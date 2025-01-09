@@ -3,14 +3,20 @@ using static NumberConvert.ChineseToArabicImpl;
 using static NumberConvert.ArabicToChineseImpl;
 using static NumberConvert.EnglishToArabicImpl;
 using static NumberConvert.EnglishToArabicStackImpl;
+using static ChineseToArabicMethod;
 
 public static partial class NumberConvert
 {
-  public static long ChineseToArabic(string chineseNumber)
+  public static long ChineseToArabic(string chineseNumber, ChineseToArabicMethod method = Default)
   {
-    return ConvertChineseToArabic(chineseNumber);
+    return method switch
+    {
+      Gpt => ConvertChineseToArabic_GPT_o1_mini(chineseNumber),
+      DeepSeek => ConvertChineseToArabic_DeepSeek(chineseNumber),
+      _ => ConvertChineseToArabic(chineseNumber),
+    };
   }
-  
+
   public static string ArabicToChinese(long number)
   {
     return ConvertArabicToChinese(number);
