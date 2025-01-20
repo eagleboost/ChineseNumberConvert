@@ -24,6 +24,12 @@
     <Compile Update="NumberConvert.EnglishToArabicStack.cs">
       <DependentUpon>NumberConvert.cs</DependentUpon>
     </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.DeepSeek.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.GPT.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

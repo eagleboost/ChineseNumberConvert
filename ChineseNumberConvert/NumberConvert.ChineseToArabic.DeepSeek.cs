@@ -4,103 +4,46 @@ public static partial class NumberConvert
 {
   public static partial class ChineseToArabicImpl
   {
-    private static readonly Dictionary<char, int> ChineseNumMap = new()
+    public static long ConvertChineseToArabic_DeepSeek(string chineseNumber)
     {
-      {'零', 0},
-      {'一', 1},
-      {'二', 2},
-      {'三', 3},
-      {'四', 4},
-      {'五', 5},
-      {'六', 6},
-      {'七', 7},
-      {'八', 8},
-      {'九', 9},
-      {'十', 10},
-      {'百', 100},
-      {'千', 1000},
-      {'万', 10000},
-      {'亿', 100000000}
-    };
-    
-    public static int ConvertChineseToArabic_DeepSeek(string chineseNumber)
-    {
-      if (string.IsNullOrEmpty(chineseNumber))
-        throw new ArgumentException("输入字符串不能为空。");
-    
-      int total = 0;
-      chineseNumber = chineseNumber.Trim();
-    
-      // 处理“亿”
-      int yiIndex = chineseNumber.IndexOf("亿", StringComparison.Ordinal);
-      if (yiIndex != -1)
-      {
-        string yiPart = chineseNumber.Substring(0, yiIndex);
-        total += ConvertSmallUnit(yiPart) * 100000000;
-        chineseNumber = chineseNumber.Substring(yiIndex + 1);
-      }
-    
-      // 处理“万”
-      int wanIndex = chineseNumber.IndexOf("万", StringComparison.Ordinal);
-      if (wanIndex != -1)
-      {
-        string wanPart = chineseNumber.Substring(0, wanIndex);
-        total += ConvertSmallUnit(wanPart) * 10000;
-        chineseNumber = chineseNumber.Substring(wanIndex + 1);
-      }
-    
-      // 处理剩余部分
-      total += ConvertSmallUnit(chineseNumber);
-    
-      return total;
-    }
-    
-    private static int ConvertSmallUnit(string part)
-    {
-      int result = 0;
-      int temp = 0;
-    
-      for (var i = 0; i < part.Length; i++)
-      {
-        if (ChineseNumMap.TryGetValue(part[i], out var value))
-        {
-          if (value >= 10)
-          {
-            if (temp == 0)
-            {
-              if (value == 10)
-                temp = 10;
-              else if (value == 100)
-                temp = 100;
-              else if (value == 1000)
-                temp = 1000;
-            }
-            else
-            {
-              if (value == 10)
-                temp *= 10;
-              else if (value == 100)
-                temp *= 100;
-              else if (value == 1000)
-                temp *= 1000;
-            }
+      long total = 0;
+      long currentSegment = 0;
+      int currentNumber = 0;
+      long lastUnit = long.MaxValue;
 
-            result += temp;
-            temp = 0;
-          }
-          else
-          {
-            temp = value;
-          }
+      foreach (char c in chineseNumber)
+      {
+        if (TryGetNumber(c, out int num))
+        {
+          currentNumber = num;
         }
         else
         {
-          throw new ArgumentException("无效的中文数字字符: " + part[i]);
+          var unit = GetUnit(c);
+          if (unit >= 10000) // 大单位（亿/万）
+          {
+            total += (currentSegment + currentNumber) * unit;
+            currentSegment = 0;
+            currentNumber = 0;
+            lastUnit = long.MaxValue;
+          }
+          else // 小单位（千/百/十）
+          {
+            if (unit > lastUnit)
+              throw new ArgumentException($"单位顺序错误: {c}");
+
+            if (currentNumber == 0)
+              currentNumber = 1;
+
+            currentSegment += currentNumber * unit;
+            currentNumber = 0;
+            lastUnit = unit;
+          }
         }
+        // 零被隐式跳过（既不匹配单位也不匹配数字）
       }
-    
-      result += temp;
-      return result;
+
+      return total + currentSegment + currentNumber;
     }
   }
 }
