@@ -5,6 +5,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +29,9 @@
       <DependentUpon>NumberConvert.cs</DependentUpon>
     </Compile>
     <Compile Update="NumberConvert.ChineseToArabic.GPT.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.Claude.cs">
       <DependentUpon>NumberConvert.cs</DependentUpon>
     </Compile>
   </ItemGroup>

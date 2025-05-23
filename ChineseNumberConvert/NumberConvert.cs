@@ -13,6 +13,7 @@ public static partial class NumberConvert
     {
       Gpt => ConvertChineseToArabic_GPT_o1_mini(chineseNumber),
       DeepSeek => ConvertChineseToArabic_DeepSeek(chineseNumber),
+      Claude => ConvertChineseToArabic_Claude4(chineseNumber),
       _ => ConvertChineseToArabic(chineseNumber),
     };
   }

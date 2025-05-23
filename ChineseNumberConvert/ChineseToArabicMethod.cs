@@ -4,5 +4,6 @@ public enum ChineseToArabicMethod
 {
   Default,
   Gpt,
-  DeepSeek
+  DeepSeek,
+  Claude
 }

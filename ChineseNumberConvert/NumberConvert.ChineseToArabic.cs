@@ -4,6 +4,34 @@ public static partial class NumberConvert
 {
   public static partial class ChineseToArabicImpl
   {
+    // 使用静态数组而不是字典以减少查找时间
+    private static readonly int[] NumberValues = new int[char.MaxValue];
+    private static readonly int[] UnitValues = new int[char.MaxValue];
+    
+    static ChineseToArabicImpl()
+    {
+      Array.Fill(NumberValues, -1); 
+      Array.Fill(UnitValues, -1); 
+      // 初始化数字映射
+      NumberValues['一'] = 1;
+      NumberValues['二'] = 2;
+      NumberValues['三'] = 3;
+      NumberValues['四'] = 4;
+      NumberValues['五'] = 5;
+      NumberValues['六'] = 6;
+      NumberValues['七'] = 7;
+      NumberValues['八'] = 8;
+      NumberValues['九'] = 9;
+      NumberValues['零'] = 0;
+        
+      // 初始化单位映射
+      UnitValues['十'] = 10;
+      UnitValues['百'] = 100;
+      UnitValues['千'] = 1000;
+      UnitValues['万'] = 10000;
+      UnitValues['亿'] = 100000000;
+    }
+    
     public static long ConvertChineseToArabic(string chineseNumber)
     {
       var unit = 1;
@@ -75,35 +103,13 @@ public static partial class NumberConvert
 
     private static bool TryGetNumber(char c, out int result)
     {
-      result = c switch
-      {
-        '零' => 0,
-        '一' => 1,
-        '二' => 2,
-        '三' => 3,
-        '四' => 4,
-        '五' => 5,
-        '六' => 6,
-        '七' => 7,
-        '八' => 8,
-        '九' => 9,
-        _ => -1,
-      };
-
+      result = NumberValues[c];
       return result != -1;
     }
 
     private static int GetUnit(char c)
     {
-      return c switch
-      {
-        '十' => 10,
-        '百' => 100,
-        '千' => 1000,
-        '万' => 10000,
-        '亿' => 100000000,
-        _ => throw new ArgumentException(c.ToString())
-      };
+      return UnitValues[c];
     }
   }
 }

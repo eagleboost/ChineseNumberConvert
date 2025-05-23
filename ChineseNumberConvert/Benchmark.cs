@@ -25,6 +25,12 @@ public class Benchmark
   }
 
   [Benchmark]
+  public void CN_To_Arabic_Claude()
+  {
+    NumberConvert.ChineseToArabic("七千二百五十四万一千三百八十八", Claude);
+  }
+  
+  [Benchmark]
   public void EN_To_Arabic_V1()
   {
     NumberConvert.EnglishToArabic("seventy-two million, five hundred and forty thousand, three hundred and eighty-eight");
