@@ -12,6 +12,9 @@ public static partial class NumberConvert
     return method switch
     {
       Gpt => ConvertChineseToArabic_GPT_o1_mini(chineseNumber),
+      Gpt5V1 => ConvertChineseToArabic_GPT_5_v1(chineseNumber),
+      Gpt5V2 => ConvertChineseToArabic_GPT_5_v2(chineseNumber),
+      Gpt5V3 => ConvertChineseToArabic_GPT_5_v3(chineseNumber),
       DeepSeek => ConvertChineseToArabic_DeepSeek(chineseNumber),
       Claude => ConvertChineseToArabic_Claude4(chineseNumber),
       _ => ConvertChineseToArabic(chineseNumber),
