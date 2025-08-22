@@ -26,7 +26,7 @@ public class Benchmark
   {
     NumberConvert.ChineseToArabic(ChineseNumber, DeepSeek);
   }
-
+  
   [Benchmark]
   public void CN_To_Arabic_Claude()
   {
@@ -49,6 +49,24 @@ public class Benchmark
   public void CN_To_Arabic_GPT5_v3()
   {
     NumberConvert.ChineseToArabic(ChineseNumber, Gpt5V3);
+  }
+  
+  [Benchmark]
+  public void CN_To_Arabic_Grok_v2()
+  {
+    NumberConvert.ChineseToArabic(ChineseNumber, GrokV2);
+  }
+    
+  [Benchmark]
+  public void CN_To_Arabic_Grok_v3()
+  {
+    NumberConvert.ChineseToArabic(ChineseNumber, GrokV3);
+  }
+    
+  [Benchmark]
+  public void CN_To_Arabic_Grok_v4()
+  {
+    NumberConvert.ChineseToArabic(ChineseNumber, GrokV4);
   }
   
   [Benchmark]

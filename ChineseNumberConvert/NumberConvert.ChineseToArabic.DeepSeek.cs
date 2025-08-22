@@ -7,13 +7,13 @@ public static partial class NumberConvert
     public static long ConvertChineseToArabic_DeepSeek(string chineseNumber)
     {
       long total = 0;
-      long currentSegment = 0;
+      long currentSection = 0;
       int currentNumber = 0;
-      long lastUnit = long.MaxValue;
 
-      foreach (char c in chineseNumber)
+      for (var i = 0; i < chineseNumber.Length; i++)
       {
-        if (TryGetNumber(c, out int num))
+        var c = chineseNumber[i];
+        if (TryGetNumber(c, out var num))
         {
           currentNumber = num;
         }
@@ -22,28 +22,23 @@ public static partial class NumberConvert
           var unit = GetUnit(c);
           if (unit >= 10000) // 大单位（亿/万）
           {
-            total += (currentSegment + currentNumber) * unit;
-            currentSegment = 0;
+            total += (currentSection + currentNumber) * unit;
+            currentSection = 0;
             currentNumber = 0;
-            lastUnit = long.MaxValue;
           }
           else // 小单位（千/百/十）
           {
-            if (unit > lastUnit)
-              throw new ArgumentException($"单位顺序错误: {c}");
-
             if (currentNumber == 0)
               currentNumber = 1;
 
-            currentSegment += currentNumber * unit;
+            currentSection += currentNumber * unit;
             currentNumber = 0;
-            lastUnit = unit;
           }
         }
         // 零被隐式跳过（既不匹配单位也不匹配数字）
       }
 
-      return total + currentSegment + currentNumber;
+      return total + currentSection + currentNumber;
     }
   }
 }

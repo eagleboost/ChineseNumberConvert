@@ -35,6 +35,27 @@
     <Compile Update="NumberConvert.ChineseToArabic.Claude.cs">
       <DependentUpon>NumberConvert.cs</DependentUpon>
     </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.GPT5-v1.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.GPT5-v2.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.GPT5-v3.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.Grok-v1.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.Grok-v2.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.Grok-v3.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Update="NumberConvert.ChineseToArabic.Grok-v4.cs">
+      <DependentUpon>NumberConvert.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

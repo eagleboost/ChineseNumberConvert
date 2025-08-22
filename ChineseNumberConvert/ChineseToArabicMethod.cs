@@ -8,5 +8,9 @@ public enum ChineseToArabicMethod
   Gpt5V2,
   Gpt5V3,
   DeepSeek,
-  Claude
+  Claude,
+  GrokV1,
+  GrokV2,
+  GrokV3,
+  GrokV4
 }

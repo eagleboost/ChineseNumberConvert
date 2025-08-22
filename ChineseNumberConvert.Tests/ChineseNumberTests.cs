@@ -96,6 +96,9 @@ public class ChineseNumberTests
       Assert.That(ChineseToArabic(cnNumber, Gpt5V3), Is.EqualTo(expected));
       Assert.That(ChineseToArabic(cnNumber, DeepSeek), Is.EqualTo(expected));
       Assert.That(ChineseToArabic(cnNumber, Claude), Is.EqualTo(expected));
+      Assert.That(ChineseToArabic(cnNumber, GrokV2), Is.EqualTo(expected));
+      Assert.That(ChineseToArabic(cnNumber, GrokV3), Is.EqualTo(expected));
+      Assert.That(ChineseToArabic(cnNumber, GrokV4), Is.EqualTo(expected));
     });
   }
 }

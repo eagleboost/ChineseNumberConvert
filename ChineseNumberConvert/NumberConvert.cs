@@ -17,6 +17,10 @@ public static partial class NumberConvert
       Gpt5V3 => ConvertChineseToArabic_GPT_5_v3(chineseNumber),
       DeepSeek => ConvertChineseToArabic_DeepSeek(chineseNumber),
       Claude => ConvertChineseToArabic_Claude4(chineseNumber),
+      GrokV1 => ConvertChineseToArabic_Grok_V1(chineseNumber),
+      GrokV2 => ConvertChineseToArabic_Grok_V2(chineseNumber),
+      GrokV3 => ConvertChineseToArabic_Grok_V3(chineseNumber),
+      GrokV4 => ConvertChineseToArabic_Grok_V4(chineseNumber),
       _ => ConvertChineseToArabic(chineseNumber),
     };
   }
